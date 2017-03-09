@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dryfield</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css"/>
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="tools/EventEmitter.js"></script>
+    <script src="models/Field.js"></script>
+    <script src="models/User.js"></script>
+    <script src="views/GameView.js"></script>
+    <script src="views/ScoreView.js"></script>
+    <script src="controllers/GameController.js"></script>
+    <script src="controllers/ScoreController.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <nav>
+        <div>
+            <button id="game-view">Game</button>
+            <button id="score-view">Score</button>
+        </div>
+    </nav>
+    <main id="main"></main>
+</body>
+</html>

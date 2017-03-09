@@ -1,0 +1,61 @@
+nav{
+    min-height: 50px;
+}
+nav div, #start-game{
+    float: right;
+}
+.active{
+    background-color: white;
+}
+button{
+    padding: 5px;
+    margin: 2px;
+    min-width: 50px;
+}
+#top{
+    font-size: 2em;
+    text-align: center;
+    font-weight: bold;
+}
+.show-data{
+    padding: 10px;
+    margin: 20px;
+}
+.show-water{
+    font-size: 2em;
+    font-weight: bold;
+    padding: 50px;
+    margin: 20px;
+    border: 1px solid grey;
+    box-shadow: 5px 5px 5px 0 grey;
+}
+.field-container{
+    width: 33%;
+    display: inline-block;
+    text-align: center;
+}
+.field{
+    margin: 20px;
+}
+.field button{
+    width: 90%;
+}
+#buy-water-container{
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid grey;
+    box-shadow: 5px 5px 5px 0 grey;
+}
+.icon{
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+    background-color: black;
+    color: white;
+}
+@media screen and (max-width: 480px) {
+    .field-container{
+        width: 100%;
+        display: block;
+    }
+}
