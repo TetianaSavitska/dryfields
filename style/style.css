@@ -46,6 +46,7 @@ button{
     padding: 10px;
     border: 1px solid grey;
     box-shadow: 5px 5px 5px 0 grey;
+    display: none;
 }
 .icon{
     padding: 5px 10px 5px 10px;

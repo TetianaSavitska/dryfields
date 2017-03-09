@@ -26,6 +26,53 @@
             <button id="score-view">Score</button>
         </div>
     </nav>
-    <main id="main"></main>
+    <main id="main">
+        <button id="start-game">Play</button>
+
+        <section id="top">
+            <span class="show-data" ><span id="harvests">0</span> harvests </span>
+            <span class="show-data" id="water">3L</span>
+            <span class="show-data" id="money">50$</span>
+            </section>
+        <section id="fields">
+            <section class="field-container" id="field-1">
+            <div class="field">
+                <button id="water-field-1">Water</button>
+                <div class="show-water"><span id="cistern-1">3</span>L</div>
+                <button id="collect-harvest-1">Collect</button>
+                </div>
+            </section>
+            <section class="field-container" id="field-2">
+                <div class="field">
+                    <button id="water-field-2">Water</button>
+                    <div class="show-water"><span id="cistern-2">3</span>L</div>
+                    <button id="collect-harvest-2">Collect</button>
+                </div>
+            </section>
+            <section class="field-container" id="field-3">
+                <div class="field">
+                    <button id="water-field-3">Water</button>
+                    <div class="show-water"><span id="cistern-3">3</span>L</div>
+                    <button id="collect-harvest-3">Collect</button>
+                </div>
+            </section>
+        </section>
+        <section id="buy-water">
+            <button id="show-buy-water">Buy water</button>
+        </section>
+        <section id="buy-water-container">
+            <h3>
+                <span id="plus"><i class="material-icons">add_circle</i></span>
+                <span id="minus"><i class="material-icons">remove_circle</i></span>
+                <span id="close"><i class="material-icons">cancel</i></span>
+                <span>Buy water</span>
+            </h3>
+            <div>
+                <input type="number" placeholder="0" /> L
+                <input type="submit" value="Buy"/>
+            </div>
+            </section>
+    </main>
+
 </body>
 </html>
