@@ -11,22 +11,20 @@ function GameController(view){
 
 GameController.prototype.init = function () {
     let _self = this
-    // faire disparaitre la fenetre "buy-water-container"
-    document.getElementById("close-buy-water").onclick = function () {
-        _self.off('hide-buy-water', _self.showBuyWater)
-    }
+    // $('#buy-water-container').hide()
 };
 
 GameController.prototype.bindEvents = function(){
-   // this.view.on('start-game', this.startGame);
+   this.view.on('start-game', this.startGame);
     this.view.on('water-field', this.waterFieldCb);
     this.view.on('collect-harvest', this.collectHarvest);
     this.view.on('buy-water', this.buyWater);
-    //this.view.on('show-buy-water', this.buyWater);
+    this.view.on('show-buy-water', this.showBuyWater);
+    this.view.on('hide-buy-water', this.hideBuyWater)
 };
 
 GameController.prototype.startGame = function(){
-    this.bindEvents();
+
 };
 
 GameController.prototype.waterField = function(data){
@@ -49,13 +47,13 @@ GameController.prototype.buyWater = function () {
 }
 
 GameController.prototype.showBuyWater = function(){
-    document.getElementById('buy-water-container').setAttribute('style', 'display: block')
+    $('#buy-water-container').show()
     //TODO stop the game
 };
-// GameController.prototype.hideBuyWater = function () {
-//     document.getElementById('buy-water-container').setAttribute('style', 'display: none')
-//     //TODO restart game
-// }
+GameController.prototype.hideBuyWater = function () {
+    $('#buy-water-container').hide()
+    //TODO restart game
+}
 
 //startGame()
 //collectHarvest(field)
