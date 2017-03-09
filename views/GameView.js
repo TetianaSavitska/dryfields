@@ -3,7 +3,7 @@ function GameView(user, fields){
     this.user = user;
     this.fields = fields;
 
-    this.init();
+    //this.init();
 }
 
 GameView.prototype = Object.create(EventEmitter.prototype);
@@ -11,6 +11,27 @@ GameView.prototype.constructor = GameView;
 
 GameView.prototype.init = function(){
     //click listeners
+    const _self = this;
+
+    document.getElementById('start-game').onclick = function(){
+        _self.emit('start-game',  {});
+    };
+
+    for (let ii=1; ii<= this.fields.length ; ii++) {
+        document.getElementById('water-field'+ii).onclick = function () {
+            _self.emit('water-field', {
+                fieldId: ii,
+                cistern: parseInt(document.getElementById('cistern'+ii).innerHTML)
+            });
+        };
+        document.getElementById('collect-harvest'+ii).onclick = function () {
+            _self.emit('collect-harvest', {});
+        };
+    }
+    document.getElementById('show-buy-water').onclick = function(){
+        _self.emit('show-buy-water',  {});
+       // gameView.showBuyWater();
+    };
 };
 
 GameView.prototype.showGame = function(){
@@ -23,12 +44,12 @@ GameView.prototype.showGame = function(){
         '</section>' +
         '<section id="fields">';
 
-    for (let ii=1; ii<4; ii++){
+    for (let ii=1; ii<= this.fields.length ; ii++){
         content += '<section class="field-container" id="field' + ii +'">' +
             '<div class="field">'+
-                '<button>Water</button>'+
-                '<div id="cistern" class="show-water">3L</div>'+
-                '<button>Collect</button>'+
+                '<button id="water-field' + ii +'">Water</button>'+
+                '<div class="show-water"><span id="cistern' + ii +'">3</span>L</div>'+
+                '<button id="collect-harvest' + ii +'">Collect</button>'+
             '</div>'+
         '</section>';
     }

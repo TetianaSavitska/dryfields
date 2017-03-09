@@ -8,7 +8,7 @@ window.onload = function() {
     const fields = [field1, field2, field3];
 
     const gameView = new GameView(user, fields);
-    const gameController = new GameController(user, gameView, fields);
+    const gameController = new GameController(gameView);
 
     const scoreView = new ScoreView();
     const scoreController = new ScoreController();
@@ -18,9 +18,6 @@ window.onload = function() {
     //should be in the view and controller
     document.getElementById('game-view').onclick = function(){
         gameView.showGame();
-    };
-    document.getElementById('show-buy-water').onclick = function(){
-        gameView.showBuyWater();
     };
 
     document.getElementById('score-view').onclick = function(){
