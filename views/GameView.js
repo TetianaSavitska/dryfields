@@ -3,8 +3,8 @@ function GameView(user, fields){
     this.user = user;
     this.fields = fields;
 
-    this.bindEvents();
     this.init();
+    this.bindEvents();
 }
 
 GameView.prototype = Object.create(EventEmitter.prototype);
@@ -12,9 +12,13 @@ GameView.prototype.constructor = GameView;
 
 GameView.prototype.bindEvents = function(){
     //from model
+    const _self = this;
+
     this.fields.forEach(function(field){
-        this.field.on('cistern-changed', this.showCistern);
-    })
+        field.on('cistern-changed', _self.showCistern);
+    });
+
+    _self.user.on('water-changed', _self.showWater);
 };
 
 GameView.prototype.init = function(){
@@ -30,8 +34,11 @@ GameView.prototype.init = function(){
         document.getElementById('water-field-'+ii).onclick = function () {
             _self.emit('water-field', {
                 fieldId: ii,
-                cistern: parseInt(document.getElementById('cistern-'+ii).innerHTML)
+                cistern: parseInt(document.getElementById('cistern-'+ii).innerHTML),
+                water: parseInt(document.getElementById('water').innerHTML)
             });
+            console.log('listen-emit' + ii);
+            console.log(parseInt(document.getElementById('cistern-'+ii).innerHTML))
         };
         document.getElementById('collect-harvest-'+ii).onclick = function () {
             _self.emit('collect-harvest', {});
@@ -42,6 +49,16 @@ GameView.prototype.init = function(){
         _self.emit('show-buy-water',  {});
     };
 };
+
+GameView.prototype.showCistern = function(data){
+    $('#cistern-'+data.id).text(data.cistern);
+};
+
+GameView.prototype.showWater = function(data){
+    $('#water').text(data.water);
+};
+
+
 
 GameView.prototype.showGame = function(){
     // //html of Game
@@ -66,7 +83,7 @@ GameView.prototype.showGame = function(){
     // content += '</section>'+
     //     '<button id="show-buy-water">Buy water</button>';
 
-    document.getElementById('main').innerHTML = content;
+   // document.getElementById('main').innerHTML = content;
     document.getElementById('game-view').setAttribute('class', 'active');
     document.getElementById('score-view').setAttribute('class', '');
 };
@@ -89,9 +106,8 @@ GameView.prototype.showBuyWater = function(){
     document.getElementById('main').innerHTML+=content;
 };
 
-GameView.prototype.showCistern = function(data){
-    $('cistern'+data.id).text(data.cistern);
-};
+
+
 
 // GameView.prototype.showBuyWater = function(){
 //     let content = '<section id="buy-water-container">' +

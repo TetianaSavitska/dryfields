@@ -19,4 +19,5 @@ Field.prototype.setCistern = function(cistern){
         id: this.id,
         cistern: this.cistern
     });
+    console.log('listen-model' +this.id)
 };
