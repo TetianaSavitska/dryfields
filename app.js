@@ -13,15 +13,15 @@ window.onload = function() {
     const scoreView = new ScoreView();
     const scoreController = new ScoreController();
 
-    gameView.showGame();
-
-    //should be in the view and controller
-    document.getElementById('game-view').onclick = function(){
-        gameView.showGame();
-    };
-
-    document.getElementById('score-view').onclick = function(){
-        scoreView.showScore();
-    };
+    // gameView.showGame();
+    //
+    // //should be in the view and controller
+    // document.getElementById('game-view').onclick = function(){
+    //     gameView.showGame();
+    // };
+    //
+    // document.getElementById('score-view').onclick = function(){
+    //     scoreView.showScore();
+    // };
 
 };

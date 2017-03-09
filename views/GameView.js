@@ -3,8 +3,8 @@ function GameView(user, fields){
     this.user = user;
     this.fields = fields;
 
-    this.bindEvents();
     this.init();
+    this.bindEvents();
 }
 
 GameView.prototype = Object.create(EventEmitter.prototype);
@@ -13,7 +13,7 @@ GameView.prototype.constructor = GameView;
 GameView.prototype.bindEvents = function(){
     //from model
     this.fields.forEach(function(field){
-        this.field.on('cistern-changed', this.showCistern);
+        field.on('cistern-changed', this.showCistern);
     })
 };
 
@@ -41,6 +41,13 @@ GameView.prototype.init = function(){
     document.getElementById('show-buy-water').onclick = function(){
         _self.emit('show-buy-water',  {});
     };
+
+    //faire apparaitre la fenetre "buy-water-container"
+    document.getElementById("buy-water-container").onclick = function () {
+        _self.emit('show-buy-water')
+    };
+
+
 };
 
 GameView.prototype.showGame = function(){
@@ -90,7 +97,7 @@ GameView.prototype.showBuyWater = function(){
 };
 
 GameView.prototype.showCistern = function(data){
-    $('cistern'+data.id).text(data.cistern);
+    $('cistern-'+data.id).text(data.cistern);
 };
 
 // GameView.prototype.showBuyWater = function(){
