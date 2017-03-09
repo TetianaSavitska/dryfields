@@ -3,34 +3,43 @@ function GameView(user, fields){
     this.user = user;
     this.fields = fields;
 
+    this.bindEvents();
     //this.init();
 }
 
 GameView.prototype = Object.create(EventEmitter.prototype);
 GameView.prototype.constructor = GameView;
 
+GameView.prototype.bindEvents = function(){
+    //from model
+    this.fields.forEach(function(field){
+        this.field.on('cistern-changed', this.showCistern);
+    })
+};
+
 GameView.prototype.init = function(){
     //click listeners
     const _self = this;
 
+    //to controller
     document.getElementById('start-game').onclick = function(){
         _self.emit('start-game',  {});
     };
 
     for (let ii=1; ii<= this.fields.length ; ii++) {
-        document.getElementById('water-field'+ii).onclick = function () {
+        document.getElementById('water-field-'+ii).onclick = function () {
             _self.emit('water-field', {
                 fieldId: ii,
-                cistern: parseInt(document.getElementById('cistern'+ii).innerHTML)
+                cistern: parseInt(document.getElementById('cistern-'+ii).innerHTML)
             });
         };
-        document.getElementById('collect-harvest'+ii).onclick = function () {
+        document.getElementById('collect-harvest-'+ii).onclick = function () {
             _self.emit('collect-harvest', {});
         };
     }
+
     document.getElementById('show-buy-water').onclick = function(){
         _self.emit('show-buy-water',  {});
-       // gameView.showBuyWater();
     };
 };
 
@@ -77,4 +86,8 @@ GameView.prototype.showBuyWater = function(){
         '</section>';
 
     document.getElementById('main').innerHTML+=content;
+};
+
+GameView.prototype.showCistern = function(data){
+    $('cistern'+data.id).text(data.cistern);
 };

@@ -8,17 +8,22 @@ function GameController(view){
 
 GameController.prototype.bindEvents = function(){
     this.view.on('start-game', this.startGame);
-    this.view.on('water-field', this.waterField);
-    this.view.on('collect-harvest', this.collectHarvest);
-    this.view.on('buy-water', this.buyWater);
 };
 
 GameController.prototype.startGame = function(){
+    this.view.on('water-field', this.waterField);
+    this.view.on('collect-harvest', this.collectHarvest);
+    this.view.on('buy-water', this.buyWater);
+    //this.view.on('show-buy-water', this.buyWater);
+
 
 };
 
 GameController.prototype.waterField = function(field){
-
+    //setWater
+    this.user.water -=1;
+    //setCistern
+    this.fields[field.id].cistern += 1;
 };
 
 GameController.prototype.collectHarvest = function(field){

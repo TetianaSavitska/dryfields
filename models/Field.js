@@ -8,3 +8,15 @@ function Field(id){
 
 Field.prototype = Object.create(EventEmitter.prototype);
 Field.prototype.constructor = Field;
+
+Field.prototype.findFieldById = function(id){
+
+};
+
+Field.prototype.setCistern = function(cistern){
+    this.cistern = cistern;
+    this.emit('cistern-changed', {
+        id: this.id,
+        cistern: this.cistern
+    });
+};
