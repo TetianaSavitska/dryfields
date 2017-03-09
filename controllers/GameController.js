@@ -28,6 +28,7 @@ GameController.prototype.bindEvents = function(){
     this.view.on('collect-harvest', this.collectHarvestCb);
     this.view.on('buy-water', this.buyWaterCb);
     this.view.on('show-buy-water', this.showBuyWater);
+    this.view.on('hide-buy-water', this.hideBuyWater);
 };
 
 GameController.prototype.startGame = function(){
@@ -40,21 +41,27 @@ GameController.prototype.startGame = function(){
             }
         });
     }, 2000);
+
 };
 
 GameController.prototype.waterField = function(data){
     if(data.water > 0) {
         this.user.setWater(data.water - 1);
-
     }
     if ( this.user.water == 0){
         $('#water').css('color', 'red');
     }
-    var id = data.fieldId -1;
-    this.fields[id].setCistern(data.cistern+1);
+    if(this.user.water > 0){
+        const id = data.fieldId -1;
+        this.fields[id].setCistern(data.cistern+1);
+    }
 };
 
 GameController.prototype.collectHarvest = function(data){
+    const id = data.fieldId -1;
+    if(this.fields[id]){
+        
+    }
     this.user.setHarvests(this.user.harvests + 1);
 };
 
@@ -69,14 +76,13 @@ GameController.prototype.buyWater = function (data) {
 };
 
 GameController.prototype.showBuyWater = function(){
-    document.getElementById('buy-water-container').setAttribute('style', 'display: block')
+    $('#buy-water-container').show();
     //TODO stop the game
 };
-// GameController.prototype.hideBuyWater = function () {
-//     document.getElementById('buy-water-container').setAttribute('style', 'display: none')
-//     //TODO restart game
-// }
+GameController.prototype.hideBuyWater = function () {
+    $('#buy-water-container').hide();
+    //TODO restart game
+};
 
-//startGame()
 //collectHarvest(field)
 //buyWater()
