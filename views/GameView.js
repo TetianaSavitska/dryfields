@@ -48,6 +48,13 @@ GameView.prototype.init = function(){
     document.getElementById('show-buy-water').onclick = function(){
         _self.emit('show-buy-water',  {});
     };
+
+    //faire apparaitre la fenetre "buy-water-container"
+    document.getElementById("buy-water-container").onclick = function () {
+        _self.emit('show-buy-water')
+    };
+
+
 };
 
 GameView.prototype.showCistern = function(data){
@@ -57,8 +64,6 @@ GameView.prototype.showCistern = function(data){
 GameView.prototype.showWater = function(data){
     $('#water').text(data.water);
 };
-
-
 
 GameView.prototype.showGame = function(){
     // //html of Game
@@ -88,7 +93,6 @@ GameView.prototype.showGame = function(){
     document.getElementById('score-view').setAttribute('class', '');
 };
 
-
 GameView.prototype.showBuyWater = function(){
     let content = '<section id="buy-water-container">' +
             '<h3>' +
@@ -107,22 +111,4 @@ GameView.prototype.showBuyWater = function(){
 };
 
 
-
-
-// GameView.prototype.showBuyWater = function(){
-//     let content = '<section id="buy-water-container">' +
-//             '<h3>' +
-//                 '<span id="plus"><i class="material-icons">add_circle</i></span> ' +
-//                 '<span id="minus"><i class="material-icons">remove_circle</i></span> ' +
-//                 '<span id="close"><i class="material-icons">cancel</i></span> ' +
-//                 '<span>Buy water</span>'+
-//             '</h3>'+
-//             '<div>' +
-//                 '<input type="number" placeholder="0" /> L '+
-//                 '<input type="submit" value="Buy"/>'+
-//             '</div>'+
-//         '</section>';
-//
-//     document.getElementById('main').innerHTML+=content;
-// };
 

@@ -13,6 +13,7 @@ window.onload = function() {
     const scoreView = new ScoreView();
     const scoreController = new ScoreController();
 
+
     /*//gameView.showGame();
 
     //should be in the view and controller
@@ -24,4 +25,5 @@ window.onload = function() {
         scoreView.showScore();
     };
 */
+    
 };

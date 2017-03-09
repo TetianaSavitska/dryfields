@@ -5,8 +5,17 @@ function GameController(view){
 
     this.waterFieldCb = this.waterField.bind(this);
 
+    this.init()
     this.bindEvents();
 }
+
+GameController.prototype.init = function () {
+    let _self = this
+    // faire disparaitre la fenetre "buy-water-container"
+    document.getElementById("close-buy-water").onclick = function () {
+        _self.off('hide-buy-water', _self.showBuyWater)
+    }
+};
 
 GameController.prototype.bindEvents = function(){
    // this.view.on('start-game', this.startGame);
@@ -35,13 +44,19 @@ GameController.prototype.collectHarvest = function(field){
 
 };
 
-GameController.prototype.buyWater = function(){
+GameController.prototype.buyWater = function () {
 
+}
+
+GameController.prototype.showBuyWater = function(){
+    document.getElementById('buy-water-container').setAttribute('style', 'display: block')
+    //TODO stop the game
 };
+// GameController.prototype.hideBuyWater = function () {
+//     document.getElementById('buy-water-container').setAttribute('style', 'display: none')
+//     //TODO restart game
+// }
 
 //startGame()
-//waterField(field):
-//user -1 water
-//field +1 water
 //collectHarvest(field)
 //buyWater()
