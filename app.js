@@ -25,5 +25,5 @@ window.onload = function() {
         scoreView.showScore();
     };
 */
-    
+
 };

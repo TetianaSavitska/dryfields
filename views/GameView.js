@@ -16,9 +16,12 @@ GameView.prototype.bindEvents = function(){
 
     this.fields.forEach(function(field){
         field.on('cistern-changed', _self.showCistern);
+        field.on('progress-changed', _self.showProgress)
     });
 
     _self.user.on('water-changed', _self.showWater);
+    _self.user.on('money-changed', _self.showMoney);
+    _self.user.on('harvests-changed', _self.showHarvests);
 };
 
 GameView.prototype.init = function(){
@@ -27,7 +30,9 @@ GameView.prototype.init = function(){
 
     //to controller
     document.getElementById('start-game').onclick = function(){
-        _self.emit('start-game',  {});
+        _self.emit('start-game',  {
+            interval: null
+        });
     };
 
     for (let ii=1; ii<= this.fields.length ; ii++) {
@@ -37,13 +42,20 @@ GameView.prototype.init = function(){
                 cistern: parseInt(document.getElementById('cistern-'+ii).innerHTML),
                 water: parseInt(document.getElementById('water').innerHTML)
             });
-            console.log('listen-emit' + ii);
-            console.log(parseInt(document.getElementById('cistern-'+ii).innerHTML))
         };
         document.getElementById('collect-harvest-'+ii).onclick = function () {
-            _self.emit('collect-harvest', {});
+            _self.emit('collect-harvest', {
+                fieldId: ii
+            });
         };
     }
+
+    document.getElementById('buy-water-form').onsubmit = function(e){
+        e.preventDefault();
+        _self.emit('buy-water',  {
+            amount: parseInt(document.getElementById('water-input').value)
+        });
+    };
 
     document.getElementById('show-buy-water').onclick = function(){
         _self.emit('show-buy-water',  {});
@@ -51,7 +63,7 @@ GameView.prototype.init = function(){
 
     //faire apparaitre la fenetre "buy-water-container"
     document.getElementById("buy-water-container").onclick = function () {
-        _self.emit('show-buy-water')
+        _self.emit('show-buy-water', null);
     };
 
 
@@ -61,8 +73,20 @@ GameView.prototype.showCistern = function(data){
     $('#cistern-'+data.id).text(data.cistern);
 };
 
+GameView.prototype.showProgress = function(data){
+    $('#progress-'+data.id).text(data.progress);
+}
+
 GameView.prototype.showWater = function(data){
     $('#water').text(data.water);
+};
+
+GameView.prototype.showMoney = function(data){
+    document.getElementById('money').innerHTML = data.money;
+};
+
+GameView.prototype.showHarvests = function(data){
+    $('#harvests').text(data.harvests);
 };
 
 GameView.prototype.showGame = function(){

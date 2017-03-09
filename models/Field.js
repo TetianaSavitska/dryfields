@@ -19,5 +19,12 @@ Field.prototype.setCistern = function(cistern){
         id: this.id,
         cistern: this.cistern
     });
-    console.log('listen-model' +this.id)
+};
+
+Field.prototype.setProgress = function(progress){
+    this.progress = progress;
+    this.emit('progress-changed', {
+        id: this.id,
+        progress: this.progress
+    });
 };

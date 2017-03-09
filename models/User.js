@@ -17,3 +17,20 @@ User.prototype.setWater = function(water){
         water: this.water
     });
 };
+
+User.prototype.setMoney = function(money){
+    this.money = money;
+    this.emit('money-changed', {
+        username: this.name,
+        money: this.money
+    });
+    console.log('model')
+};
+
+User.prototype.setHarvests = function(harvests){
+    this.harvests = harvests;
+    this.emit('harvests-changed', {
+        username: this.name,
+        harvests: this.harvests
+    })
+};

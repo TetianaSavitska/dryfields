@@ -38,21 +38,30 @@
             <section class="field-container" id="field-1">
             <div class="field">
                 <button id="water-field-1">Water</button>
-                <div class="show-water"><span id="cistern-1">3</span>L</div>
+                <div class="show-water">
+                    <span id="cistern-1">3</span>L<br/>
+                    <span id="progress-1">0</span>/20
+                </div>
                 <button id="collect-harvest-1">Collect</button>
                 </div>
             </section>
             <section class="field-container" id="field-2">
                 <div class="field">
                     <button id="water-field-2">Water</button>
-                    <div class="show-water"><span id="cistern-2">3</span>L</div>
+                    <div class="show-water">
+                        <span id="cistern-2">3</span>L<br/>
+                        <span id="progress-2">0</span>/20
+                    </div>
                     <button id="collect-harvest-2">Collect</button>
                 </div>
             </section>
             <section class="field-container" id="field-3">
                 <div class="field">
                     <button id="water-field-3">Water</button>
-                    <div class="show-water"><span id="cistern-3">3</span>L</div>
+                    <div class="show-water">
+                        <span id="cistern-3">3</span>L<br />
+                        <span id="progress-3">0</span>/20
+                    </div>
                     <button id="collect-harvest-3">Collect</button>
                 </div>
             </section>
@@ -67,10 +76,10 @@
                 <button id="close-buy-water"><i class="material-icons">cancel</i></button>
                 <span>Buy water</span>
             </h3>
-            <div>
-                <input type="number" placeholder="0" /> L
+            <form id="buy-water-form">
+                <input type="number" id="water-input" placeholder="0" /> L
                 <input type="submit" value="Buy"/>
-            </div>
+            </form>
             </section>
     </main>
 
